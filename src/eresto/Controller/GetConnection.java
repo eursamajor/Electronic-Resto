@@ -21,7 +21,7 @@ public class GetConnection {
     public java.sql.Connection getConnection() {
         try {
             // Mencoba untuk mendapatkan koneksi menggunakan URL, username, dan password database
-            con = DriverManager.getConnection("jdbc:mysql://localhost/db_eresto", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3066/db_eresto", "root", "");
         } catch (SQLException se) {
             // Menangani pengecualian jika koneksi tidak dapat dibuka
             System.out.println("No Connection open");
