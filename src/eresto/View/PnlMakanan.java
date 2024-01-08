@@ -1,22 +1,30 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package eresto.View;
 
+import eresto.Controller.KeranjangController;
+import eresto.Controller.MenuController;
+import eresto.Model.Akun;
+import eresto.Model.Keranjang;
+import eresto.Model.Menu;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
- * @author HEEKKIE
+ * @author User
  */
-public class PnlMakanan extends javax.swing.JDialog {
+public class PnlMakanan extends javax.swing.JPanel {
 
     /**
-     * Creates new form PnlMakanan
+     * Creates new form pnlMakanan
      */
-    public PnlMakanan(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public PnlMakanan() {
         initComponents();
+        getMakanan();
     }
 
     /**
@@ -28,64 +36,137 @@ public class PnlMakanan extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tblMakanan = new javax.swing.JTable();
+        btnTambahKeranjang = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        inputMakananJumlah = new javax.swing.JSpinner();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        tblMakanan.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tblMakanan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblMakananMousePressed(evt);
+            }
+        });
+        jScrollPane6.setViewportView(tblMakanan);
+
+        btnTambahKeranjang.setBackground(new java.awt.Color(51, 51, 51));
+        btnTambahKeranjang.setForeground(new java.awt.Color(255, 255, 255));
+        btnTambahKeranjang.setText("Tambah Keranjang");
+        btnTambahKeranjang.setEnabled(false);
+        btnTambahKeranjang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTambahKeranjangActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Jumlah :");
+
+        inputMakananJumlah.setEnabled(false);
+        inputMakananJumlah.setValue(1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnTambahKeranjang)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(inputMakananJumlah)))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(inputMakananJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnTambahKeranjang, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PnlMakanan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PnlMakanan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PnlMakanan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PnlMakanan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void tblMakananMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMakananMousePressed
+        // TODO add your handling code here:
+        inputMakananJumlah.setEnabled(true);
+        btnTambahKeranjang.setEnabled(true);
+    }//GEN-LAST:event_tblMakananMousePressed
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                PnlMakanan dialog = new PnlMakanan(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    private void btnTambahKeranjangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahKeranjangActionPerformed
+        // TODO add your handling code here:
+        int menu_id = Integer.parseInt((String)tblMakanan.getModel().getValueAt(tblMakanan.getSelectedRow(), 3));
+        int jumlah = Integer.parseInt(inputMakananJumlah.getValue().toString());
+        
+        if (new KeranjangController().add(new Keranjang(0, Akun.getInstance().getId(), menu_id, jumlah))) {
+            JOptionPane.showMessageDialog(this, "Successfully added to cart.", "Success", JOptionPane.INFORMATION_MESSAGE);
+            getMakanan();
+        } else {
+            
+        }
+    }//GEN-LAST:event_btnTambahKeranjangActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnTambahKeranjang;
+    private javax.swing.JSpinner inputMakananJumlah;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTable tblMakanan;
     // End of variables declaration//GEN-END:variables
+
+    private void getMakanan() {
+        // Mengambil data dari MenuController untuk semua menu
+        ArrayList<Menu> menu = new MenuController().getAllMenu();
+
+        // Mendefinisikan kolom untuk tabel menu makanan
+        Object[] rows = {"Nama", "Harga", "Stok", "ID"};
+
+        // Membuat model tabel untuk menampilkan menu makanan
+        DefaultTableModel model = new DefaultTableModel(null, rows){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        // Mengatur model tabel untuk tabel tblMakanan
+        tblMakanan.setModel(model);
+        tblMakanan.setRowHeight(20);
+
+        // Mengisi tabel dengan data menu makanan
+        for (Menu item : menu) {
+            // Menambahkan baris hanya untuk menu dengan tipe 1 (makanan)
+            if (item.getTipe() == 1) {
+                String[] data = {item.getNama(), item.getHarga(), String.valueOf(item.getStok()), String.valueOf(item.getId())};
+                model.addRow(data);
+            }
+        }
+
+        // Menghapus kolom ID dari tampilan tabel
+        tblMakanan.removeColumn(tblMakanan.getColumnModel().getColumn(3));
+
+        // Mengatur nilai dan status komponen inputMakananJumlah dan btnTambahKeranjang
+        inputMakananJumlah.setValue(1);
+        inputMakananJumlah.setEnabled(false);
+        btnTambahKeranjang.setEnabled(false);
+    }
 }
